@@ -1,0 +1,45 @@
+name:                vector-criterion-example
+version:             0.1.0.0
+description:         benchmarking vector libraries
+homepage:            https://github.com/juanbono/vector-criterion-example
+bug-reports:         https://github.com/juanbono/vector-criterion-example/issues
+license:             MIT
+license-file:        LICENSE
+author:              Juan Bono
+maintainer:          juanbono94@gmail.com
+copyright:           2017 Juan Bono
+category:            Testing
+build-type:          Simple
+extra-source-files:  README.md
+cabal-version:       >=1.10
+tested-with:         GHC == 8.0.1
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     Lib
+  ghc-options:         -Wall
+  build-depends:       base
+  default-language:    Haskell2010
+
+test-suite vector-criterion-example-test
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             Spec.hs
+  build-depends:       base
+                     , vector-criterion-example
+  ghc-options:         -Wall -Werror -threaded -rtsopts -with-rtsopts=-N
+  default-language:    Haskell2010
+
+benchmark vector-criterion-example-benchmark
+  type:                exitcode-stdio-1.0
+  default-language:    Haskell2010
+  ghc-options:         -Wall -Werror -O2 -threaded -rtsopts -with-rtsopts=-N
+  hs-source-dirs:      benchmark
+  main-is:             Main.hs
+  build-depends:       base
+                     , criterion
+                     , vector-criterion-example
+
+source-repository head
+  type:                git
+  location:            https://github.com/juanbono/vector-criterion-example.git
